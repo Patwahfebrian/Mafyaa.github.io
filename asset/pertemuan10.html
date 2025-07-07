@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Form Pendaftaran</title>
+  <script>
+    function validasiForm() {
+      var nama = document.getElementById("nama").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var konfirmasi = document.getElementById("konfirmasi").value;
+
+      // Validasi wajib isi
+      if (!nama || !email || !password || !konfirmasi) {
+        alert("Semua input wajib diisi!");
+        return false;
+      }
+
+      // Validasi email harus mengandung @ dan .com
+      if (email.indexOf("@") === -1 || email.indexOf(".com") === -1) {
+        alert("Email harus mengandung karakter '@' dan '.com'");
+        return false;
+      }
+
+      // Password minimal 6 karakter
+      if (password.length < 6) {
+        alert("Kata sandi minimal 6 karakter");
+        return false;
+      }
+
+      // Konfirmasi kata sandi harus sama
+      if (password !== konfirmasi) {
+        alert("Konfirmasi kata sandi harus sama dengan kata sandi");
+        return false;
+      }
+
+      // Jika semua validasi lolos
+      alert("Pendaftaran Berhasil");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>Form Pendaftaran</h2>
+  <form onsubmit="return validasiForm()">
+    <label>Nama Lengkap:</label><br>
+    <input type="text" id="nama"><br><br>
+
+    <label>Email:</label><br>
+    <input type="text" id="email"><br><br>
+
+    <label>Kata Sandi:</label><br>
+    <input type="password" id="password"><br><br>
+
+    <label>Konfirmasi Kata Sandi:</label><br>
+    <input type="password" id="konfirmasi"><br><br>
+
+    <input type="submit" value="Daftar">
+  </form>
+</body>
+</html>
